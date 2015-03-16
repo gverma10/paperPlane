@@ -20,17 +20,18 @@ var assetLoader: createjs.LoadQueue;
 // Game Objects
 var plane: objects.Plane;
 var island: objects.Island;
-var clouds: objects.Cloud[] = [];
+var clouds: objects.Cloud;
 var ocean: objects.Ocean;
 
 
 
 // asset manifest - array of asset objects
 var manifest = [
-    { id: "cloud", src: "assets/images/cloud.png" },
+    { id: "cloud", src: "assets/images/cloud_1.png" },
     { id: "island", src: "assets/images/island.png" },
-    { id: "ocean", src: "assets/images/ocean.gif" },
-    { id: "plane", src: "assets/images/plane.png" },
+    { id: "ocean", src: "assets/images/sample_bg.jpg" },
+    { id: "bushes", src: "assets/images/bushes.png" },
+    { id: "plane", src: "assets/images/day08_paperplane.png" },
     { id: "engine", src: "assets/audio/engine.ogg" },
     { id: "yay", src: "assets/audio/yay.ogg" },
     { id: "thunder", src: "assets/audio/thunder.ogg" }
@@ -98,10 +99,13 @@ function gameLoop() {
     plane.update();
     island.update();
 
-    for (var cloud = 3; cloud > 0; cloud--) {
+    /*for (var cloud = 3; cloud > 0; cloud--) {
         clouds[cloud].update();
         checkCollision(clouds[cloud]);
-    }
+    }*/
+
+    clouds.update();
+    
 
     checkCollision(island);
 
@@ -122,6 +126,7 @@ function main() {
     stage.addChild(ocean);
 
 
+
     // Add island to game
     island = new objects.Island();
     stage.addChild(island);
@@ -132,11 +137,13 @@ function main() {
     stage.addChild(plane);
 
     // Add clouds to game
-    for (var cloud = 3; cloud > 0; cloud--) {
+    /*for (var cloud = 3; cloud > 0; cloud--) {
         clouds[cloud] = new objects.Cloud();
-        stage.addChild(clouds[cloud]);
-    }
-
+        stage.addChild(clouds[cloud]);*/
+    clouds = new objects.Cloud();
+    stage.addChild(clouds);
+    
+    
 
 
 

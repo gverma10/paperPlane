@@ -16,14 +16,15 @@ var assetLoader;
 // Game Objects
 var plane;
 var island;
-var clouds = [];
+var clouds;
 var ocean;
 // asset manifest - array of asset objects
 var manifest = [
-    { id: "cloud", src: "assets/images/cloud.png" },
+    { id: "cloud", src: "assets/images/cloud_1.png" },
     { id: "island", src: "assets/images/island.png" },
-    { id: "ocean", src: "assets/images/ocean.gif" },
-    { id: "plane", src: "assets/images/plane.png" },
+    { id: "ocean", src: "assets/images/sample_bg.jpg" },
+    { id: "bushes", src: "assets/images/bushes.png" },
+    { id: "plane", src: "assets/images/day08_paperplane.png" },
     { id: "engine", src: "assets/audio/engine.ogg" },
     { id: "yay", src: "assets/audio/yay.ogg" },
     { id: "thunder", src: "assets/audio/thunder.ogg" }
@@ -78,10 +79,11 @@ function gameLoop() {
     ocean.update();
     plane.update();
     island.update();
-    for (var cloud = 3; cloud > 0; cloud--) {
+    /*for (var cloud = 3; cloud > 0; cloud--) {
         clouds[cloud].update();
         checkCollision(clouds[cloud]);
-    }
+    }*/
+    clouds.update();
     checkCollision(island);
     stage.update(); // Refreshes our stage
     //stats.end(); // End metering
@@ -97,9 +99,11 @@ function main() {
     // Add plane to game
     plane = new objects.Plane();
     stage.addChild(plane);
-    for (var cloud = 3; cloud > 0; cloud--) {
+    // Add clouds to game
+    /*for (var cloud = 3; cloud > 0; cloud--) {
         clouds[cloud] = new objects.Cloud();
-        stage.addChild(clouds[cloud]);
-    }
+        stage.addChild(clouds[cloud]);*/
+    clouds = new objects.Cloud();
+    stage.addChild(clouds);
 }
 //# sourceMappingURL=game.js.map

@@ -84,6 +84,7 @@
     <Content Include="assets\images\mountains.png" />
     <Content Include="assets\images\ocean.gif" />
     <Content Include="assets\images\plane.png" />
+    <Content Include="assets\images\sample_bg.jpg" />
     <Content Include="assets\images\sideplane.gif" />
     <Content Include="css\game.css" />
     <Content Include="index.html" />

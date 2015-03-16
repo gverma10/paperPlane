@@ -15,12 +15,12 @@ var objects;
             this.height = this.getBounds().height;
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
-            this.y = 430;
+            this.x = 80;
             createjs.Sound.play("engine", { loop: -1 });
         }
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
         Plane.prototype.update = function () {
-            this.x = stage.mouseX;
+            this.y = stage.mouseY;
         };
         return Plane;
     })(createjs.Bitmap);

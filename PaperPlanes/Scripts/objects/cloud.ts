@@ -1,29 +1,35 @@
 ﻿module objects {
 
     export class Cloud extends objects.GameObject {
-
+        
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
         constructor() {
             super("cloud");
 
             this.soundString = "thunder";
 
+            
+
+            this.width = this.getBounds().width;
+            this.height = this.getBounds().height;
+
             this._reset();
+            
 
         }
 
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++
         private _reset() {
             // set the island to start at a random x value
-            this.x = Math.floor(Math.random() * 640);
-            this.y = -this.height;
+            this.y = Math.floor(Math.random() * 200)+10;
+            this.x = 1000 + this.width;
             // add drift to the cloud 
-            this._dy = Math.floor(Math.random() * 5) + 5;
-            this._dx = Math.floor(Math.random() * 4) - 2;
+            this._dx = Math.floor(Math.random()*3) + 3;
+            this._dy = Math.floor(Math.random()*1);
         }
 
         private _checkBounds() {
-            if (this.y > (480 + this.height)) {
+            if (this.x < (0-this.width)) {
                 this._reset();
             }
         }
@@ -33,8 +39,7 @@
 
         public update() {
             this.y += this._dy;
-            this.x += this._dx;
-
+            this.x -= this._dx;
 
             this._checkBounds();
         }
