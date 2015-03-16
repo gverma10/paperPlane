@@ -6,40 +6,36 @@ var __extends = this.__extends || function (d, b) {
 };
 var objects;
 (function (objects) {
-    // CLOUD CLASS
     var Cloud = (function (_super) {
         __extends(Cloud, _super);
-        // CONSTRUCTOR
+        // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
         function Cloud() {
-            _super.call(this, assetLoader.getResult("cloud"));
-            this.width = this.getBounds().width;
-            this.height = this.getBounds().height;
-            this.reset();
-            this.regX = this.width * 0.5;
-            this.regY = this.height * 0.5;
+            _super.call(this, "cloud");
+            this.soundString = "thunder";
+            this._reset();
         }
+        // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++
+        Cloud.prototype._reset = function () {
+            // set the island to start at a random x value
+            this.x = Math.floor(Math.random() * 640);
+            this.y = -this.height;
+            // add drift to the cloud 
+            this._dy = Math.floor(Math.random() * 5) + 5;
+            this._dx = Math.floor(Math.random() * 4) - 2;
+        };
+        Cloud.prototype._checkBounds = function () {
+            if (this.y > (480 + this.height)) {
+                this._reset();
+            }
+        };
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
         Cloud.prototype.update = function () {
             this.y += this._dy;
             this.x += this._dx;
             this._checkBounds();
         };
-        // Reset position of island to the top
-        Cloud.prototype.reset = function () {
-            this.y = -this.height;
-            this.x = Math.floor(Math.random() * 640);
-            this._dy = Math.floor(Math.random() * 5) + 5;
-            this._dx = Math.floor(Math.random() * 4) - 2;
-        };
-        // PRIVATE METHODS +++++++++++++++++++++++++++++++++++++++++
-        Cloud.prototype._checkBounds = function () {
-            // check if island has left the bottom of the screen
-            if (this.y >= (480 + this.height)) {
-                this.reset();
-            }
-        };
         return Cloud;
-    })(createjs.Bitmap);
+    })(objects.GameObject);
     objects.Cloud = Cloud;
 })(objects || (objects = {}));
 //# sourceMappingURL=cloud.js.map

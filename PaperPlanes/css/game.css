@@ -1,3 +1,7 @@
-﻿#canvas{
+﻿body{
+    
+}
+#canvas{
+    cursor:none;
     border: dashed 1px black;
 }
