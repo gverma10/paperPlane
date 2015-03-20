@@ -55,9 +55,9 @@ var manifest = [
     { id: "plane", src: "assets/images/day08_paperplane.png" },
     { id: "playButton", src: "assets/images/playButton.png" },
     { id: "tryAgainButton", src: "assets/images/tryAgainButton.png" },
-    { id: "engine", src: "assets/audio/engine.ogg" },
-    { id: "yay", src: "assets/audio/yay.ogg" },
-    { id: "thunder", src: "assets/audio/thunder.ogg" }
+    { id: "engine", src: "assets/audio/wind.mp3" },
+    { id: "yay", src: "assets/audio/bubble.mp3" },
+    { id: "thunder", src: "assets/audio/planecrash.mp3" }
 ];
 function Preload() {
     assetLoader = new createjs.LoadQueue(); // create a new preloader

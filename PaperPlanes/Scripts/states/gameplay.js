@@ -90,7 +90,9 @@ var states;
                             this.scoreboard.lives--;
                         }
                         if (collider.name == "island") {
-                            this.scoreboard.score += 100;
+                            this.scoreboard.score += 10;
+                            this.island.reset();
+                            this.island.update();
                         }
                     }
                     collider.isColliding = true;

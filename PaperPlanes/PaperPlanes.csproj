@@ -59,9 +59,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\audio\engine.ogg" />
-    <Content Include="assets\audio\thunder.ogg" />
-    <Content Include="assets\audio\yay.ogg" />
+    <Content Include="assets\audio\bubble.mp3" />
+    <Content Include="assets\audio\planecrash.mp3" />
+    <Content Include="assets\audio\wind.mp3" />
     <Content Include="assets\images\sunmoon.png" />
     <Content Include="assets\images\swirl.png" />
     <Content Include="Scripts\constants.js" />
