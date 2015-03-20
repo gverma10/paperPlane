@@ -7,36 +7,36 @@ var __extends = this.__extends || function (d, b) {
 var objects;
 (function (objects) {
     // CLOUD CLASS
-    var Cloud1 = (function (_super) {
-        __extends(Cloud1, _super);
+    var Wind = (function (_super) {
+        __extends(Wind, _super);
         // CONSTRUCTOR
-        function Cloud1() {
-            _super.call(this, "cloud1");
-            //this.sound = "thunder";
+        function Wind() {
+            _super.call(this, "wind");
+            this.sound = "thunder";
             this.reset();
         }
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
-        Cloud1.prototype.update = function () {
+        Wind.prototype.update = function () {
             this.y += this._dy;
             this.x -= this._dx;
             this._checkBounds();
         };
         // Reset position of island to the top
-        Cloud1.prototype.reset = function () {
+        Wind.prototype.reset = function () {
             this.x = 640 + this.width;
-            this.y = Math.floor(Math.random() * 200) + 10;
-            this._dx = Math.floor(Math.random() * 3) + 1;
-            this._dy = Math.floor(Math.random());
+            this.y = Math.floor(Math.random() * 380) + 10;
+            this._dx = Math.floor(Math.random() * 5) + 5;
+            this._dy = Math.floor(Math.random() * 4) - 2;
         };
         // PRIVATE METHODS +++++++++++++++++++++++++++++++++++++++++
-        Cloud1.prototype._checkBounds = function () {
+        Wind.prototype._checkBounds = function () {
             // check if island has left the side of the screen
             if (this.x <= (0 - this.width)) {
                 this.reset();
             }
         };
-        return Cloud1;
+        return Wind;
     })(objects.GameObject);
-    objects.Cloud1 = Cloud1;
+    objects.Wind = Wind;
 })(objects || (objects = {}));
-//# sourceMappingURL=cloud1.js.map
+//# sourceMappingURL=wind.js.map

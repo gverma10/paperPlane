@@ -11,7 +11,15 @@
 /// <reference path="objects/island.ts" />
 /// <reference path="objects/cloud.ts" />
 /// <reference path="objects/cloud1.ts" />
+/// <reference path="objects/cloud2.ts" />
+/// <reference path="objects/cloud3.ts" />
+/// <reference path="objects/cloud4.ts" />
+/// <reference path="objects/wind.ts" />
+/// <reference path="objects/bushes.ts" />
+/// <reference path="objects/grass.ts" />
+/// <reference path="objects/mountains.ts" />
 /// <reference path="objects/ocean.ts" />
+/// <reference path="objects/sunmoon.ts" />
 /// <reference path="objects/button.ts" />
 /// <reference path="objects/label.ts" />
 /// <reference path="states/gameplay.ts" />
@@ -34,8 +42,16 @@ var menu;
 var manifest = [
     { id: "cloud", src: "assets/images/cloud_4.png" },
     { id: "cloud1", src: "assets/images/cloud_1.png" },
+    { id: "cloud2", src: "assets/images/cloud_2.png" },
+    { id: "cloud3", src: "assets/images/cloud_3.png" },
+    { id: "cloud4", src: "assets/images/cloud_5.png" },
+    { id: "wind", src: "assets/images/swirl.png" },
+    { id: "bushes", src: "assets/images/bushes.png" },
+    { id: "grass", src: "assets/images/grass.png" },
+    { id: "mountains", src: "assets/images/mountains.png" },
     { id: "island", src: "assets/images/blue-bubble-shiny.png" },
     { id: "ocean", src: "assets/images/dat-to-night.png" },
+    { id: "sunmoon", src: "assets/images/sunmoon.png" },
     { id: "plane", src: "assets/images/day08_paperplane.png" },
     { id: "playButton", src: "assets/images/playButton.png" },
     { id: "tryAgainButton", src: "assets/images/tryAgainButton.png" },

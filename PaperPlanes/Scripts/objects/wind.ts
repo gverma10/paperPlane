@@ -1,11 +1,11 @@
 ﻿module objects {
     // CLOUD CLASS
-    export class Cloud extends objects.GameObject {
+    export class Wind extends objects.GameObject {
 
         // CONSTRUCTOR
         constructor() {
-            super("cloud");
-            //this.sound = "thunder";
+            super("wind");
+            this.sound = "thunder";
             this.reset();
         }
 
@@ -20,9 +20,9 @@
         // Reset position of island to the top
         public reset() {
             this.x = 640 + this.width;
-            this.y = Math.floor(Math.random() * 200) + 10;
-            this._dx = Math.floor(Math.random() * 3) + 1;
-            this._dy = Math.floor(Math.random());
+            this.y = Math.floor(Math.random() * 380) + 10;
+            this._dx = Math.floor(Math.random() * 5) + 5;
+            this._dy = Math.floor(Math.random() * 4) - 2;
         }
 
         // PRIVATE METHODS +++++++++++++++++++++++++++++++++++++++++
@@ -35,4 +35,4 @@
 
     }
 
-}  
+}   

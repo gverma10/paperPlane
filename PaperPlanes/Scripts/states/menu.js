@@ -5,6 +5,14 @@
 /// <reference path="../objects/plane.ts" />
 /// <reference path="../objects/cloud.ts" />
 /// <reference path="../objects/cloud1.ts" />
+/// <reference path="../objects/cloud2.ts" />
+/// <reference path="../objects/cloud3.ts" />
+/// <reference path="../objects/cloud4.ts" />
+/// <reference path="../objects/wind.ts" />
+/// <reference path="../objects/grass.ts" />
+/// <reference path="../objects/bushes.ts" />
+/// <reference path="../objects/mountains.ts" />
+/// <reference path="../objects/sunmoon.ts" />
 /// <reference path="../objects/button.ts" />
 /// <reference path="../objects/label.ts" />
 /// <reference path="../objects/scoreboard.ts" />
@@ -21,7 +29,7 @@ var states;
             this.ocean = new objects.Ocean();
             this.game.addChild(this.ocean);
             //Game Over Label
-            this.mailPilotLabel = new objects.Label(320, 40, "MAIL PILOT");
+            this.mailPilotLabel = new objects.Label(320, 40, "PAPER PLANES");
             this.mailPilotLabel.font = "60px Consolas";
             this.mailPilotLabel.regX = this.mailPilotLabel.getMeasuredWidth() * 0.5;
             this.mailPilotLabel.regY = this.mailPilotLabel.getMeasuredLineHeight() * 0.5;

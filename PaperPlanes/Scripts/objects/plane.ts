@@ -11,7 +11,7 @@ module objects {
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
 
-            this.x = 30;
+            this.x = 80;
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
             createjs.Sound.play("engine", {loop: -1});
