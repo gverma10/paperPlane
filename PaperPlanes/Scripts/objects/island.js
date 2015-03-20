@@ -6,30 +6,32 @@ var __extends = this.__extends || function (d, b) {
 };
 var objects;
 (function (objects) {
+    // ISLAND CLASS
     var Island = (function (_super) {
         __extends(Island, _super);
-        // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
+        // CONSTRUCTOR
         function Island() {
             _super.call(this, "island");
+            this.sound = "yay";
             this._dy = 5;
-            this.soundString = "yay";
-            this._reset();
+            this.reset();
         }
-        // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++
-        Island.prototype._reset = function () {
-            // set the island to start at a random x value
-            this.x = Math.floor(Math.random() * 640);
-            this.y = -this.height;
-        };
-        Island.prototype._checkBounds = function () {
-            if (this.y > (480 + this.height)) {
-                this._reset();
-            }
-        };
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
         Island.prototype.update = function () {
-            this.y += this._dy;
+            this.x -= this._dy;
             this._checkBounds();
+        };
+        // Reset position of island to the top
+        Island.prototype.reset = function () {
+            this.x = 640 + this.width;
+            this.y = Math.floor(Math.random() * 480);
+        };
+        // PRIVATE METHODS +++++++++++++++++++++++++++++++++++++++++
+        Island.prototype._checkBounds = function () {
+            // check if island has left the bottom of the screen
+            if (this.x <= (0 - this.width)) {
+                this.reset();
+            }
         };
         return Island;
     })(objects.GameObject);

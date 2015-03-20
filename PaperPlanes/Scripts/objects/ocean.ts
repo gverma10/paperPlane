@@ -1,34 +1,33 @@
 ﻿module objects {
-    // CLOUD CLASS
-    export class Cloud extends objects.GameObject {
+    // OCEAN CLASS
+    export class Ocean extends createjs.Bitmap {
+        // PUBLIC INSTANCE VARIABLES
+        private _dy: number = 2;
 
         // CONSTRUCTOR
         constructor() {
-            super("cloud");
-            this.sound = "thunder";
+            super(assetLoader.getResult("ocean"));
+
             this.reset();
         }
 
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
         public update() {
             this.y += this._dy;
-            this.x -= this._dx;
 
             this._checkBounds();
         }
 
         // Reset position of island to the top
         public reset() {
-            this.x = 640 + this.width;
-            this.y = Math.floor(Math.random() * 200) + 10;
-            this._dx = Math.floor(Math.random() * 3) + 1;
-            this._dy = Math.floor(Math.random());
+            this.y = -960
+            this.x = 0;
         }
 
         // PRIVATE METHODS +++++++++++++++++++++++++++++++++++++++++
         private _checkBounds() {
-            // check if island has left the side of the screen
-            if (this.x <= (0 - this.width)) {
+            // check if island has left the bottom of the screen
+            if (this.y === 0) {
                 this.reset();
             }
         }

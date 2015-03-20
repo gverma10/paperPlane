@@ -4,37 +4,50 @@
 /// <reference path="typings/soundjs/soundjs.d.ts" />
 /// <reference path="typings/preloadjs/preloadjs.d.ts" />
 /// <reference path="typings/stats/stats.d.ts" />
+/// <reference path="constants.ts" />
 /// <reference path="objects/gameobject.ts" />
+/// <reference path="objects/scoreboard.ts" />
 /// <reference path="objects/plane.ts" />
 /// <reference path="objects/island.ts" />
 /// <reference path="objects/cloud.ts" />
+/// <reference path="objects/cloud1.ts" />
 /// <reference path="objects/ocean.ts" />
-//var stats: Stats = new Stats();
+/// <reference path="objects/button.ts" />
+/// <reference path="objects/label.ts" />
+/// <reference path="states/gameplay.ts" />
+/// <reference path="states/gameover.ts" />
+/// <reference path="states/menu.ts" />
+// Global game Variables
 var canvas;
 var stage;
 var assetLoader;
-// Game Objects
-var plane;
-var island;
-var clouds;
-var ocean;
-// asset manifest - array of asset objects
+var stats = new Stats();
+var currentScore = 0;
+var highScore = 0;
+// Game State Variables
+var currentState;
+var currentStateFunction;
+var stateChanged = false;
+var gamePlay;
+var gameOver;
+var menu;
 var manifest = [
-    { id: "cloud", src: "assets/images/cloud_1.png" },
-    { id: "island", src: "assets/images/island.png" },
-    { id: "ocean", src: "assets/images/sample_bg.jpg" },
-    { id: "bushes", src: "assets/images/bushes.png" },
+    { id: "cloud", src: "assets/images/cloud_4.png" },
+    { id: "cloud1", src: "assets/images/cloud_1.png" },
+    { id: "island", src: "assets/images/blue-bubble-shiny.png" },
+    { id: "ocean", src: "assets/images/dat-to-night.png" },
     { id: "plane", src: "assets/images/day08_paperplane.png" },
+    { id: "playButton", src: "assets/images/playButton.png" },
+    { id: "tryAgainButton", src: "assets/images/tryAgainButton.png" },
     { id: "engine", src: "assets/audio/engine.ogg" },
     { id: "yay", src: "assets/audio/yay.ogg" },
     { id: "thunder", src: "assets/audio/thunder.ogg" }
 ];
-// Game Objects 
-function preload() {
-    assetLoader = new createjs.LoadQueue(); // instantiated assetLoader
-    assetLoader.installPlugin(createjs.Sound);
-    assetLoader.on("complete", init, this); // event handler-triggers when loading done
-    assetLoader.loadManifest(manifest); // loading my asset manifest
+function Preload() {
+    assetLoader = new createjs.LoadQueue(); // create a new preloader
+    assetLoader.installPlugin(createjs.Sound); // need plugin for sounds
+    assetLoader.on("complete", init, this); // when assets finished preloading - then init function
+    assetLoader.loadManifest(manifest);
 }
 function init() {
     canvas = document.getElementById("canvas");
@@ -42,68 +55,46 @@ function init() {
     stage.enableMouseOver(20); // Enable mouse events
     createjs.Ticker.setFPS(60); // 60 frames per second
     createjs.Ticker.addEventListener("tick", gameLoop);
-    //setupStats();
-    main();
+    setupStats();
+    currentState = constants.MENU_STATE;
+    changeState(currentState);
 }
-// UTILITY METHODS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-/*function setupStats() {
+function setupStats() {
     stats.setMode(0);
+    // align top-left
     stats.domElement.style.position = 'absolute';
     stats.domElement.style.left = '650px';
     stats.domElement.style.top = '440px';
     document.body.appendChild(stats.domElement);
-}*/
-// Calculate the distance between two points
-function distance(p1, p2) {
-    return Math.floor(Math.sqrt(Math.pow((p2.x - p1.x), 2) + Math.pow((p2.y - p1.y), 2)));
-}
-function checkCollision(collider) {
-    var p1 = new createjs.Point();
-    var p2 = new createjs.Point();
-    p1.x = plane.x;
-    p1.y = plane.y;
-    p2.x = collider.x;
-    p2.y = collider.y;
-    if (distance(p2, p1) < ((plane.height * 0.5) + (collider.height * 0.5))) {
-        if (!collider.isColliding) {
-            createjs.Sound.play(collider.soundString);
-            collider.isColliding = true;
-        }
-    }
-    else {
-        collider.isColliding = false;
-    }
 }
 function gameLoop() {
-    //stats.begin(); // Begin metering
-    ocean.update();
-    plane.update();
-    island.update();
-    /*for (var cloud = 3; cloud > 0; cloud--) {
-        clouds[cloud].update();
-        checkCollision(clouds[cloud]);
-    }*/
-    clouds.update();
-    checkCollision(island);
-    stage.update(); // Refreshes our stage
-    //stats.end(); // End metering
+    stats.begin();
+    if (stateChanged) {
+        changeState(currentState);
+        stateChanged = false;
+    }
+    else {
+        currentStateFunction.update();
+    }
+    stats.end();
 }
-// Our Game Kicks off in here
-function main() {
-    // Add ocean to game
-    ocean = new objects.Ocean();
-    stage.addChild(ocean);
-    // Add island to game
-    island = new objects.Island();
-    stage.addChild(island);
-    // Add plane to game
-    plane = new objects.Plane();
-    stage.addChild(plane);
-    // Add clouds to game
-    /*for (var cloud = 3; cloud > 0; cloud--) {
-        clouds[cloud] = new objects.Cloud();
-        stage.addChild(clouds[cloud]);*/
-    clouds = new objects.Cloud();
-    stage.addChild(clouds);
+function changeState(state) {
+    switch (state) {
+        case constants.MENU_STATE:
+            // instantiate menu screen
+            menu = new states.Menu();
+            currentStateFunction = menu;
+            break;
+        case constants.PLAY_STATE:
+            // instantiate game play screen
+            gamePlay = new states.GamePlay();
+            currentStateFunction = gamePlay;
+            break;
+        case constants.GAME_OVER_STATE:
+            // instantiate game over screen
+            gameOver = new states.GameOver();
+            currentStateFunction = gameOver;
+            break;
+    }
 }
 //# sourceMappingURL=game.js.map
