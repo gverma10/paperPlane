@@ -62,8 +62,8 @@ var manifest = [
     { id: "ocean", src: "assets/images/dat-to-night.png" },
     { id: "sunmoon", src: "assets/images/sunmoon.png" },
     { id: "plane", src: "assets/images/day08_paperplane.png" },
-    { id: "playButton", src: "assets/images/playButton.png" },
-    { id: "tryAgainButton", src: "assets/images/tryAgainButton.png" },
+    { id: "playButton", src: "assets/images/start.png" },
+    { id: "tryAgainButton", src: "assets/images/playagain.png" },
     { id: "engine", src: "assets/audio/wind.mp3" },
     { id: "yay", src: "assets/audio/bubble.mp3" },
     { id: "thunder", src: "assets/audio/planecrash.mp3" }

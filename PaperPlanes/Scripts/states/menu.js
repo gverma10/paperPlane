@@ -34,6 +34,11 @@ var states;
             this.mailPilotLabel.regX = this.mailPilotLabel.getMeasuredWidth() * 0.5;
             this.mailPilotLabel.regY = this.mailPilotLabel.getMeasuredLineHeight() * 0.5;
             this.game.addChild(this.mailPilotLabel);
+            this.mailPilotLabel1 = new objects.Label(250, 140, "You have to save the plane\n\nfrom wind and try prick the bubbles\n\nas more as possible to gain high score..");
+            this.mailPilotLabel1.font = "24px Consolas";
+            this.mailPilotLabel1.regX = this.mailPilotLabel.getMeasuredWidth() * 0.5;
+            this.mailPilotLabel1.regY = this.mailPilotLabel.getMeasuredLineHeight() * 0.5;
+            this.game.addChild(this.mailPilotLabel1);
             //Play Button
             this.playButton = new objects.Button(320, 280, "playButton");
             this.playButton.on("click", this.playClicked, this);
