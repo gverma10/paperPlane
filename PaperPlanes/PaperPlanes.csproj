@@ -82,6 +82,7 @@
     <Content Include="Scripts\states\menu.js.map" />
     <Content Include="Scripts\constants.js.map" />
     <Content Include="Scripts\game.js.map" />
+    <Content Include="Documentation\External Game Document - Gurinder Verma - 300811333.docx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
